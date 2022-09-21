@@ -12,7 +12,7 @@ public class DagligSkaev extends Ordination {
     private Ordination ordination;
 
 
-    public DagligSkaev(LocalDate startDen, LocalDate slutDen, Patient patient, double morgenAntal, double middagAntal, ) {
+    public DagligSkaev(LocalDate startDen, LocalDate slutDen, Patient patient) {
         super(startDen, slutDen, patient);
     }
 
