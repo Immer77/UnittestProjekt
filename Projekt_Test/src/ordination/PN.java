@@ -8,12 +8,12 @@ import java.util.List;
 public class PN extends Ordination {
 
     private double antalEnheder;
-    private Ordination ordination;
-    private int dosis;
     private final List<LocalDate> givetList = new ArrayList<>();
 
-    public PN(LocalDate startDen, LocalDate slutDen, Patient patient) {
+    public PN(LocalDate startDen, LocalDate slutDen,
+              Patient patient, double antalEnheder) {
         super(startDen, slutDen, patient);
+        this.antalEnheder = antalEnheder;
 
     }
 
@@ -26,8 +26,8 @@ public class PN extends Ordination {
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        boolean indenforOmraade = givesDen.isAfter(ordination.getStartDen().minusDays(1))
-                && givesDen.isBefore(ordination.getSlutDen().plusDays(1));
+        boolean indenforOmraade = givesDen.isAfter(super.getStartDen().minusDays(1))
+                && givesDen.isBefore(super.getSlutDen().plusDays(1));
         if (indenforOmraade) {
             givetList.add(givesDen);
         }
@@ -36,7 +36,7 @@ public class PN extends Ordination {
     }
 
     public double doegnDosis() {
-        long between = ChronoUnit.DAYS.between(ordination.getStartDen(), ordination.getSlutDen());
+        long between = ChronoUnit.DAYS.between(super.getStartDen(), super.getSlutDen());
         return (givetList.size() * antalEnheder) / (between);
     }
 

@@ -3,6 +3,7 @@ package controller;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import ordination.DagligFast;
@@ -44,9 +45,8 @@ public class Controller {
         if (startDen.isAfter(slutDen)) {
             throw new IllegalArgumentException("Startdato kan ikke være efter slutdato. ");
         }
-        PN pn = new PN(startDen, slutDen, patient);
+        PN pn = new PN(startDen, slutDen, patient, antal);
         pn.setLaegemiddel(laegemiddel);
-        pn.setAntalEnheder(antal);
         return pn;
     }
 
@@ -86,7 +86,12 @@ public class Controller {
      * Pre: ordination og dato er ikke null
      */
     public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-        // TODO
+        if (dato.isAfter(ordination.getStartDen().minusDays(1)) && dato.isBefore(ordination.getSlutDen().plusDays(1))) {
+            throw new IllegalArgumentException("Datoen ikke er indenfor ordinationens gyldighedsperiode");
+        } else {
+            ordination.givDosis(dato);
+
+        }
     }
 
     /**
@@ -96,7 +101,7 @@ public class Controller {
      * Pre: patient og lægemiddel er ikke null
      */
     public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-        //TODO
+
         return 0;
     }
 
