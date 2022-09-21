@@ -6,11 +6,8 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.PN;
-import ordination.Patient;
+import com.sun.source.tree.IfTree;
+import ordination.*;
 import storage.Storage;
 
 public class Controller {
@@ -42,7 +39,7 @@ public class Controller {
      */
     public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
                                 Patient patient, Laegemiddel laegemiddel, double antal) {
-        if (startDen.isAfter(slutDen)) {
+        if (checkStartFoerSlut(startDen,slutDen)) {
             throw new IllegalArgumentException("Startdato kan ikke være efter slutdato. ");
         }
         PN pn = new PN(startDen, slutDen, patient, antal);
@@ -92,11 +89,8 @@ public class Controller {
      * Pre: ordination og dato er ikke null
      */
     public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-        if (dato.isAfter(ordination.getStartDen().minusDays(1)) && dato.isBefore(ordination.getSlutDen().plusDays(1))) {
+        if (!ordination.givDosis(dato)) {
             throw new IllegalArgumentException("Datoen ikke er indenfor ordinationens gyldighedsperiode");
-        } else {
-            ordination.givDosis(dato);
-
         }
     }
 
@@ -107,8 +101,13 @@ public class Controller {
      * Pre: patient og lægemiddel er ikke null
      */
     public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-
-        return 0;
+        if (patient.getVaegt() > 120) {
+            return laegemiddel.getEnhedPrKgPrDoegnTung() * patient.getVaegt();
+        } else if (patient.getVaegt() <= 25) {
+            return laegemiddel.getEnhedPrKgPrDoegnLet() * patient.getVaegt();
+        } else {
+            return laegemiddel.getEnhedPrKgPrDoegnNormal() * patient.getVaegt();
+        }
     }
 
     /**
@@ -116,10 +115,18 @@ public class Controller {
      * ordinationer.
      * Pre: laegemiddel er ikke null
      */
-    public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
-                                                   double vægtSlut, Laegemiddel laegemiddel) {
-        // TODO
-        return 0;
+    public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart, double vægtSlut, Laegemiddel laegemiddel) {
+        int count = 0;
+        for (Patient p: storage.getAllPatienter()) {
+            if (p.getVaegt() <= vægtSlut && p.getVaegt() >= vægtStart) {
+                for (Ordination o : p.getOrdinationer()) {
+                    if (o.getLaegemiddel() == laegemiddel) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
     }
 
     public List<Patient> getAllPatienter() {
