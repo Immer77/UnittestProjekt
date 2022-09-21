@@ -39,7 +39,7 @@ public class Controller {
      */
     public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
                                 Patient patient, Laegemiddel laegemiddel, double antal) {
-        if (checkStartFoerSlut(startDen,slutDen)) {
+        if (!checkStartFoerSlut(startDen,slutDen)) {
             throw new IllegalArgumentException("Startdato kan ikke være efter slutdato. ");
         }
         PN pn = new PN(startDen, slutDen, patient, antal);
