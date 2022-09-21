@@ -39,7 +39,7 @@ public class Controller {
      */
     public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
                                 Patient patient, Laegemiddel laegemiddel, double antal) {
-        if (startDen.isAfter(slutDen)) {
+        if (checkStartFoerSlut(startDen,slutDen)) {
             throw new IllegalArgumentException("Startdato kan ikke være efter slutdato. ");
         }
         PN pn = new PN(startDen, slutDen, patient, antal);
@@ -95,8 +95,13 @@ public class Controller {
      * Pre: patient og lægemiddel er ikke null
      */
     public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-
-        return 0;
+        if (patient.getVaegt() > 120) {
+            return laegemiddel.getEnhedPrKgPrDoegnTung() * patient.getVaegt();
+        } else if (patient.getVaegt() <= 25) {
+            return laegemiddel.getEnhedPrKgPrDoegnLet() * patient.getVaegt();
+        } else {
+            return laegemiddel.getEnhedPrKgPrDoegnNormal() * patient.getVaegt();
+        }
     }
 
     /**
