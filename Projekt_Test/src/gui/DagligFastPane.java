@@ -1,4 +1,4 @@
-package ordination.gui;
+package gui;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

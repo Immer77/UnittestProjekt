@@ -1,4 +1,4 @@
-package ordination.ordination;
+package ordination;
 
 import java.time.LocalTime;
 

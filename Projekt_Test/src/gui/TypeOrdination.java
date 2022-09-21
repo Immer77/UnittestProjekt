@@ -1,3 +1,3 @@
-package ordination.gui;
+package gui;
 
 public enum TypeOrdination {PN, FAST, SKAEV}

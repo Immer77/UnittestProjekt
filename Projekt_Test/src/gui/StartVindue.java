@@ -1,4 +1,4 @@
-package ordination.gui;
+package gui;
 
 import controller.Controller;
 import javafx.application.Application;

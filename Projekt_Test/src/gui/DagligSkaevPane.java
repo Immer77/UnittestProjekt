@@ -1,4 +1,4 @@
-package ordination.gui;
+package gui;
 
 import java.time.DateTimeException;
 import java.time.LocalTime;

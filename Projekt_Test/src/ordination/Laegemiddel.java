@@ -1,4 +1,4 @@
-package ordination.ordination;
+package ordination;
 
 public class Laegemiddel {
     private String navn;

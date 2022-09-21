@@ -1,4 +1,4 @@
-package ordination.ordination;
+package ordination;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -6,9 +6,31 @@ import java.time.temporal.ChronoUnit;
 public abstract class Ordination {
     private LocalDate startDen;
     private LocalDate slutDen;
+    // TODO link til lægemiddel
+    // Associationen mellem -> 0..1
     private Laegemiddel laegemiddel;
-    // TODO Link til Laegemiddel
+
     // TODO constructor (med specifikation)
+
+
+    public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
+        this.startDen = startDen;
+        this.slutDen = slutDen;
+        patient.addOrdination(this);
+    }
+    public Laegemiddel getLaegemiddel() {
+        return laegemiddel;
+    }
+
+    /*
+    Sets Laegemiddlet til ordinationen
+     */
+    public void setLaegemiddel(Laegemiddel laegemiddel) {
+        if(this.laegemiddel != laegemiddel){
+            this.laegemiddel = laegemiddel;
+        }
+    }
+
 
     public LocalDate getStartDen() {
         return startDen;

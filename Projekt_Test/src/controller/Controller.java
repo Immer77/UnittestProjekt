@@ -1,4 +1,4 @@
-package ordination.controller;
+package controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

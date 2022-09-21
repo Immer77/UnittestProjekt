@@ -1,4 +1,4 @@
-package ordination.storage;
+package storage;
 
 import java.util.ArrayList;
 import java.util.List;
