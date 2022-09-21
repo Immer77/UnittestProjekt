@@ -9,10 +9,9 @@ public class DagligSkaev extends Ordination {
 
     private final ArrayList<Dosis> doses = new ArrayList<>();
 
-    private Ordination ordination;
-
 
     public DagligSkaev(LocalDate startDen, LocalDate slutDen, Patient patient) {
+
         super(startDen, slutDen, patient);
     }
 
@@ -30,6 +29,7 @@ public class DagligSkaev extends Ordination {
 
     public void opretDosis(LocalTime tid, double antal) {
         // TODO
+
         Dosis dosis = new Dosis(tid, antal);
         doses.add(dosis);
     }
@@ -51,6 +51,6 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public String getType() {
-        return ordination.getType();
+        return getType();
     }
 }

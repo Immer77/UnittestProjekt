@@ -6,11 +6,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.PN;
-import ordination.Patient;
+import ordination.*;
 import storage.Storage;
 
 public class Controller {
@@ -75,8 +71,26 @@ public class Controller {
     public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
                                                   LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
                                                   LocalTime[] klokkeSlet, double[] antalEnheder) {
-        // TODO
-        return null;
+        // TODo
+
+        DagligSkaev dagligSkaevReturn = null;
+
+        if (slutDen.isBefore(startDen)) {
+            throw new IllegalArgumentException("Slutdatoen er før startdatoen");
+        } else if (klokkeSlet.length != antalEnheder.length) {
+            throw new IllegalArgumentException("Klokkeslet og antal enheder er forskellige");
+        } else {
+
+            for (int i = 0; i < klokkeSlet.length; i++) {
+                DagligSkaev dagligSkaev = new DagligSkaev(startDen, slutDen, patient);
+                dagligSkaev.setLaegemiddel(laegemiddel);
+                dagligSkaev.opretDosis(klokkeSlet[i], antalEnheder[i]);
+
+                dagligSkaevReturn = dagligSkaev;
+            }
+        }
+        return dagligSkaevReturn;
+
     }
 
     /**
