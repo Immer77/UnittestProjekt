@@ -60,8 +60,14 @@ public class Controller {
                                                 LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
                                                 double morgenAntal, double middagAntal, double aftenAntal,
                                                 double natAntal) {
-        // TODO
-        return null;
+        if(checkStartFoerSlut(startDen,slutDen)){
+            throw new IllegalArgumentException("Startdato er efter slutdato");
+        }else{
+            DagligFast dagligFast = new DagligFast(startDen, slutDen, patient, morgenAntal,middagAntal,aftenAntal,natAntal);
+            dagligFast.setLaegemiddel(laegemiddel);
+            return dagligFast;
+        }
+
     }
 
     /**

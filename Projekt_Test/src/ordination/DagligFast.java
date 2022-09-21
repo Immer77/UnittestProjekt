@@ -11,8 +11,12 @@ public class DagligFast extends Ordination{
     private int counter = 0;
     private Dosis[] doses = new Dosis[4];
 
-    public DagligFast(LocalDate startDen, LocalDate slutDen, Patient patient) {
+    public DagligFast(LocalDate startDen, LocalDate slutDen, Patient patient, double morgenAntal, double middagAntal, double aftenantal, double natantal) {
         super(startDen, slutDen, patient);
+        doses[0] = new Dosis(LocalTime.of(8,00), morgenAntal);
+        doses[1] = new Dosis(LocalTime.of(12,00), middagAntal);
+        doses[2] = new Dosis(LocalTime.of(18,00), aftenantal);
+        doses[3] = new Dosis(LocalTime.of(00,0), natantal);
     }
 
     public Dosis[] getDoses() {
