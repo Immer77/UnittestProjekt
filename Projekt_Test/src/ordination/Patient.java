@@ -37,6 +37,11 @@ public class Patient {
     }
 
     //TODO: Metoder (med specifikation) til at vedligeholde link til Ordination
+    /*
+    adder ordinationen til patienten
+    hvis den ikke er tilknyttet
+    Pre: ordiniation er kun tilknyttet en person.
+     */
     public void addOrdination(Ordination ordination) {
         if(!ordinationer.contains(ordination)){
             ordinationer.add(ordination);

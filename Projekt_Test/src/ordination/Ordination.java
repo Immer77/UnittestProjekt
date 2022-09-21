@@ -12,7 +12,9 @@ public abstract class Ordination {
 
     // TODO constructor (med specifikation)
 
-
+    /*
+    Pre: Patient != null
+     */
     public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
         this.startDen = startDen;
         this.slutDen = slutDen;
