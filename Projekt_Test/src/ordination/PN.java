@@ -47,7 +47,7 @@ public class PN extends Ordination {
 
 
     public double samletDosis() {
-        return ordination.samletDosis();
+        return givetList.size() * antalEnheder;
     }
 
     /**
@@ -63,5 +63,8 @@ public class PN extends Ordination {
         return antalEnheder;
     }
 
+    public void setAntalEnheder(double antalEnheder) {
+        this.antalEnheder = antalEnheder;
+    }
 }
 
