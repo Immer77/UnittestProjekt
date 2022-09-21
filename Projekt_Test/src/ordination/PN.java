@@ -1,6 +1,7 @@
 package ordination;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,12 @@ public class PN extends Ordination {
 
     private double antalEnheder;
     private Ordination ordination;
-    private List<LocalDate> dateList = new ArrayList<>();
+    private int dosis;
+    private final List<LocalDate> givetList = new ArrayList<>();
 
     public PN(LocalDate startDen, LocalDate slutDen, Patient patient) {
         super(startDen, slutDen, patient);
+
     }
 
     /**
@@ -23,25 +26,28 @@ public class PN extends Ordination {
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        dateList.add(givesDen);
-        return givesDen.isAfter(ordination.getStartDen().minusDays(1))
+        boolean indenforOmraade = givesDen.isAfter(ordination.getStartDen().minusDays(1))
                 && givesDen.isBefore(ordination.getSlutDen().plusDays(1));
+        if (indenforOmraade) {
+            givetList.add(givesDen);
+        }
+        return indenforOmraade;
+
     }
 
     public double doegnDosis() {
-        double sum = 0;
-
-        return 0.0;
+        long between = ChronoUnit.DAYS.between(ordination.getStartDen(), ordination.getSlutDen());
+        return (givetList.size() * antalEnheder) / (between);
     }
 
     @Override
     public String getType() {
-        return null;
+        return "PN";
     }
 
 
     public double samletDosis() {
-        return 0.0;
+        return ordination.samletDosis();
     }
 
     /**
@@ -50,7 +56,7 @@ public class PN extends Ordination {
      * @return
      */
     public int getAntalGangeGivet() {
-        return dateList.size();
+        return givetList.size();
     }
 
     public double getAntalEnheder() {
