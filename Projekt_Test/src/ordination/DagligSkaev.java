@@ -29,7 +29,6 @@ public class DagligSkaev extends Ordination {
 
     public void opretDosis(LocalTime tid, double antal) {
         // TODO
-
         Dosis dosis = new Dosis(tid, antal);
         doses.add(dosis);
     }
@@ -37,7 +36,7 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public double samletDosis() {
-        return doegnDosis() / antalDage();
+        return doegnDosis() * antalDage();
     }
 
     @Override
