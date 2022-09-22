@@ -32,8 +32,7 @@ public abstract class Ordination {
             this.laegemiddel = laegemiddel;
         }
     }
-
-
+    
     public LocalDate getStartDen() {
         return startDen;
     }	

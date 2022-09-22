@@ -56,7 +56,7 @@ public class Controller {
                                                 LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
                                                 double morgenAntal, double middagAntal, double aftenAntal,
                                                 double natAntal) {
-        if(!checkStartFoerSlut(startDen,slutDen)){
+        if(checkStartFoerSlut(startDen,slutDen)){
             throw new IllegalArgumentException("Startdato er efter slutdato");
         }else{
             DagligFast dagligFast = new DagligFast(startDen, slutDen, patient, morgenAntal,middagAntal,aftenAntal,natAntal);
@@ -81,7 +81,7 @@ public class Controller {
 
         DagligSkaev dagligSkaevReturn = null;
 
-        if (slutDen.isBefore(startDen)) {
+        if (checkStartFoerSlut(startDen,slutDen)) {
             throw new IllegalArgumentException("Slutdatoen er før startdatoen");
         } else if (klokkeSlet.length != antalEnheder.length) {
             throw new IllegalArgumentException("Klokkeslet og antal enheder er forskellige");
@@ -162,7 +162,7 @@ public class Controller {
      */
     private boolean checkStartFoerSlut(LocalDate startDato, LocalDate slutDato) {
         boolean result = true;
-        if (slutDato.compareTo(startDato) < 0) {
+        if (startDato.compareTo(slutDato) < 0) {
             result = false;
         }
         return result;
