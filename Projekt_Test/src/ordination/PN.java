@@ -32,13 +32,12 @@ public class PN extends Ordination {
             givetList.add(givesDen);
         }
         return indenforOmraade;
-
     }
 
     public double doegnDosis() {
         LocalDate foerste = givetList.get(0);
-        LocalDate sidste = givetList.get(givetList.size()-1);
-        long between = ChronoUnit.DAYS.between(foerste,sidste);
+        LocalDate sidste = givetList.get(givetList.size() - 1);
+        int between = (int) ChronoUnit.DAYS.between(foerste, sidste);
         return (givetList.size() * antalEnheder) / between;
     }
 
