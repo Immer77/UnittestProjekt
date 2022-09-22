@@ -26,19 +26,28 @@ public class PN extends Ordination {
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        boolean indenforOmraade = givesDen.isAfter(super.getStartDen().minusDays(1))
-                && givesDen.isBefore(super.getSlutDen().plusDays(1));
-        if (indenforOmraade) {
-            givetList.add(givesDen);
+        boolean indenforOmraade = false;
+        if(givesDen != null){
+            indenforOmraade = givesDen.isAfter(getStartDen().minusDays(1))
+                    && givesDen.isBefore(getSlutDen().plusDays(1));
+            if (indenforOmraade) {
+                givetList.add(givesDen);
+            }
         }
+
         return indenforOmraade;
+
     }
 
     public double doegnDosis() {
-        LocalDate foerste = givetList.get(0);
-        LocalDate sidste = givetList.get(givetList.size() - 1);
-        int between = (int) ChronoUnit.DAYS.between(foerste, sidste);
-        return (givetList.size() * antalEnheder) / between;
+        if(givetList.size() > 0){
+            LocalDate foerste = givetList.get(0);
+            LocalDate sidste = givetList.get(givetList.size()-1);
+            long between = ChronoUnit.DAYS.between(foerste,sidste);
+            return (givetList.size() * antalEnheder) / between;
+        }
+        return 0.0;
+
     }
 
     @Override
