@@ -22,7 +22,7 @@ public class PN extends Ordination {
      * Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
      * Retrurner false ellers og datoen givesDen ignoreres
      *
-     * @param givesDen
+     * @param
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
@@ -36,7 +36,10 @@ public class PN extends Ordination {
     }
 
     public double doegnDosis() {
-        return (givetList.size() * antalEnheder) / super.antalDage();
+        LocalDate foerste = givetList.get(0);
+        LocalDate sidste = givetList.get(givetList.size()-1);
+        long between = ChronoUnit.DAYS.between(foerste,sidste);
+        return (givetList.size() * antalEnheder) / between;
     }
 
     @Override
