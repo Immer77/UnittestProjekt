@@ -57,7 +57,7 @@ public class Controller {
                                                 LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
                                                 double morgenAntal, double middagAntal, double aftenAntal,
                                                 double natAntal) {
-        if(checkStartFoerSlut(startDen,slutDen)){
+        if(!checkStartFoerSlut(startDen,slutDen)){
             throw new IllegalArgumentException("Startdato er efter slutdato");
         }else{
             DagligFast dagligFast = new DagligFast(startDen, slutDen, patient, morgenAntal,middagAntal,aftenAntal,natAntal);
