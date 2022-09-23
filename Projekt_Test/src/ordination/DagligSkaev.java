@@ -31,6 +31,7 @@ public class DagligSkaev extends Ordination {
         // TODO
         Dosis dosis = new Dosis(tid, antal);
         doses.add(dosis);
+
     }
 
 

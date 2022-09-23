@@ -90,7 +90,7 @@ public class Controller {
             for (int i = 0; i < klokkeSlet.length; i++) {
                 DagligSkaev dagligSkaev = new DagligSkaev(startDen, slutDen, patient);
                 dagligSkaev.setLaegemiddel(laegemiddel);
-                dagligSkaev.opretDosis(klokkeSlet[i], antalEnheder[i]);
+                dagligSkaev.createDosis(klokkeSlet[i], antalEnheder[i]);
 
                 dagligSkaevReturn = dagligSkaev;
             }
