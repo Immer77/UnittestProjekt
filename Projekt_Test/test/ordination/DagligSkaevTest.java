@@ -135,14 +135,75 @@ class DagligSkaevTest {
 
 
     @org.junit.jupiter.api.Test
-    void samletDosis() {
+    void TC1_samletDosis5_dage5 () {
+
+        //Arrange
+
+        Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
+        DagligSkaev d1 = new  DagligSkaev(LocalDate.of(2022, 01,01),LocalDate.of(2022,01,05), p1);
+        d1.createDosis(LocalTime.of(9,00),2);
+        d1.createDosis(LocalTime.of(12,00),3);
+
+        //Act
+        double actual = d1.samletDosis();
+        double expected = 25;
+
+        //Assert
+        assertEquals(expected,actual);
+
     }
 
     @org.junit.jupiter.api.Test
-    void doegnDosis() {
+    void TC1_doegnDosis_5 () {
+
+        //Arrange
+
+        Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
+        DagligSkaev d1 = new  DagligSkaev(LocalDate.of(2022, 01,01),LocalDate.of(2022,01,05), p1);
+        d1.createDosis(LocalTime.of(9,00),2);
+        d1.createDosis(LocalTime.of(12,00),3);
+
+        //Act
+        double actual = d1.doegnDosis();
+        double expected = 5;
+
+        //Assert
+        assertEquals(expected,actual);
     }
 
     @org.junit.jupiter.api.Test
-    void getType() {
+    void TC2_doegnDosis_0Dosis () {
+
+        //Arrange
+
+        Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
+        DagligSkaev d1 = new  DagligSkaev(LocalDate.of(2022, 01,01),LocalDate.of(2022,01,05), p1);
+        d1.createDosis(LocalTime.of(9,00),0);
+        d1.createDosis(LocalTime.of(12,00),0);
+
+        //Act
+        double actual = d1.doegnDosis();
+        double expected = 0;
+
+        //Assert
+        assertEquals(expected,actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    void TC3_doegnDosis_MindreEndnul_Dosis () {
+
+        //Arrange
+
+        Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
+        DagligSkaev d1 = new  DagligSkaev(LocalDate.of(2022, 01,01),LocalDate.of(2022,01,05), p1);
+        d1.createDosis(LocalTime.of(9,00),0);
+        d1.createDosis(LocalTime.of(12,00),-2);
+
+        //Act
+        double actual = d1.doegnDosis();
+        double expected = -2;
+
+        //Assert
+        assertEquals(expected,actual);
     }
 }
