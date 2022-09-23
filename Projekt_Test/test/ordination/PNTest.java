@@ -280,12 +280,4 @@ class PNTest {
         // ASSERT
         assertEquals(7, pn1.getAntalGangeGivet());
     }
-
-    @Test
-    void getAntalEnheder() {
-    }
-
-    @Test
-    void setAntalEnheder() {
-    }
 }
