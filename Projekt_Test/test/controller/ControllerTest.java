@@ -9,14 +9,8 @@ import org.junit.jupiter.api.*;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-
-import ordination.DagligFast;
 import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.Patient;
 import org.junit.jupiter.api.BeforeEach;
-
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,20 +43,6 @@ class ControllerTest {
 
 
     }
-
-    @org.junit.jupiter.api.Test
-    void getController() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void opretPNOrdination() {
-
-    }
-
-    @Test
-    void getTestController() {
-    }
-
 
     @Test
     void TC1_opretPNOrdination() {
