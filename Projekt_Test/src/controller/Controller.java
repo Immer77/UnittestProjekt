@@ -143,7 +143,7 @@ public class Controller {
                 }
             }
         } if (vægtSlut < vægtStart) {
-            throw new IllegalArgumentException("Slutvægten kan ikke være lavere en startvægten");
+            throw new IllegalArgumentException("Slutvægten kan ikke være lavere end startvægten");
         } if (vægtStart <= 0 || vægtSlut <= 0) {
             throw new IllegalArgumentException("Vægt kan ikke være 0");
         }

@@ -27,8 +27,6 @@ class ControllerTest {
 
     Controller controller = new Controller();
 
-    @org.junit.jupiter.api.BeforeEach
-    Controller controller = Controller.getTestController();
     Patient donnaSummer;
     Patient vladimirPutin;
     Patient johnHammond;
@@ -58,9 +56,13 @@ class ControllerTest {
 
     @org.junit.jupiter.api.Test
     void opretPNOrdination() {
+
+    }
+
     @Test
     void getTestController() {
     }
+
 
     @Test
     void TC1_opretPNOrdination() {
