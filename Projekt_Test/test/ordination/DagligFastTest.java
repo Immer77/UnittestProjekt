@@ -1,26 +1,20 @@
 package ordination;
-
-
-import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.*;
-
 import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class DagligFastTest {
 
-    DagligFast dagligFast;
-    Patient patient;
 
-    @BeforeEach
-    void setUp() {
-        patient = new Patient("201297-0000", "Peter Immersen", 85);
-        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 4, 4, 4, 4);
-    }
 
-    @Test
+//    @BeforeEach
+//    void setUp() {
+//
+//        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 4, 4, 4, 4);
+//    }
+
+    @org.junit.jupiter.api.Test
     void dagligfast_Constructor_TC1() {
         int morgenAntal = 2;
         int middagAntal = 1;
@@ -28,6 +22,7 @@ class DagligFastTest {
         int natAntal = 1;
         LocalDate startDato = LocalDate.of(2022,9,22);
         LocalDate slutDato = LocalDate.of(2022,9,27);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
         DagligFast dagligFast1 = new DagligFast(startDato,slutDato, patient, morgenAntal, middagAntal, aftenAntal,natAntal);
 
         assertEquals(morgenAntal,dagligFast1.getDoses()[0].getAntal());
@@ -46,8 +41,8 @@ class DagligFastTest {
         int natAntal = 1;
         LocalDate startDato = LocalDate.of(2022,9,22);
         LocalDate slutDato = LocalDate.of(2022,9,27);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
         DagligFast dagligFast1 = new DagligFast(startDato,slutDato, patient, morgenAntal, middagAntal, aftenAntal,natAntal);
-
         assertEquals(morgenAntal,dagligFast1.getDoses()[0].getAntal());
         assertEquals(middagAntal,dagligFast1.getDoses()[1].getAntal());
         assertEquals(aftenAntal,dagligFast1.getDoses()[2].getAntal());
@@ -64,6 +59,7 @@ class DagligFastTest {
         int natAntal = 0;
         LocalDate startDato = LocalDate.of(2022,9,22);
         LocalDate slutDato = LocalDate.of(2022,9,27);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
         DagligFast dagligFast1 = new DagligFast(startDato,slutDato, patient, morgenAntal, middagAntal, aftenAntal,natAntal);
 
         assertEquals(morgenAntal,dagligFast1.getDoses()[0].getAntal());
@@ -77,7 +73,8 @@ class DagligFastTest {
     @Test
     void samletDosis_TC1() {
         // Arrange
-        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 1, 1, 1, 1);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 1, 1, 1, 1);
         double expectedResult = 12;
 
         // Act
@@ -90,7 +87,8 @@ class DagligFastTest {
     @Test
     void samletDosis_TC2() {
         // Arrange
-        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 22), patient, 0, 0, 0, 0);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 22), patient, 0, 0, 0, 0);
         double expectedResult = 0;
 
         // Act
@@ -103,7 +101,8 @@ class DagligFastTest {
     @Test
     void samletDosis_TC3() {
         // Arrange
-        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 25), patient, 9, 9, 9, 9);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 25), patient, 9, 9, 9, 9);
         double expectedResult = 144;
 
         // Act
@@ -116,7 +115,8 @@ class DagligFastTest {
     @Test
     void samletDosis_TC4() {
         // Arrange
-        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 21), patient, 2, 2, 2, 2);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 21), patient, 2, 2, 2, 2);
         double expectedResult = 0;
 
         // Act
@@ -132,6 +132,8 @@ class DagligFastTest {
     void doegnDosis_ForEnDag_TC1() {
         // Arrange
         double expected = 16;
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 21), patient, 2, 2, 2, 2);
 
         // Act
         double actual = dagligFast.doegnDosis();
@@ -143,7 +145,8 @@ class DagligFastTest {
     @Test
     void doegnDosis_ForEnDag_TC2(){
         // Arrange
-        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 0, 0, 0, 0);
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 0, 0, 0, 0);
         double expected = 0;
 
         // Act
@@ -155,6 +158,8 @@ class DagligFastTest {
 
     @Test
     void getType() {
+        Patient patient = new Patient("201297-0000", "Peter Immersen", 85);
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 21), patient, 2, 2, 2, 2);
         assertEquals("Daglig Fast",dagligFast.getType()) ;
     }
 }

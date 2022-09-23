@@ -1,38 +1,36 @@
 package ordination;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PatientTest {
 
-    @org.junit.jupiter.api.Test
-    void getCprnr() {
+
+    @Test
+    void patient_AddOrdination() {
+        // Arrange
+//        patient = new Patient("201298-2133", "Peter Immersen", 85);
+//        dagligFast = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 4, 4, 4, 4);
+//        dagligFast1 = new DagligFast(LocalDate.of(2022, 9, 22), LocalDate.of(2022, 9, 24), patient, 4, 4, 4, 4);
+//        int expected = 2;
+
+        //Act
+//        patient.addOrdination(dagligFast);
+//        patient.addOrdination(dagligFast1);
+
+        // Assert
+//        assertEquals(expected,patient.getOrdinationer().size());
+
     }
 
-    @org.junit.jupiter.api.Test
-    void getNavn() {
+    @Test
+    void getOrdinationer_TC1() {
     }
 
-    @org.junit.jupiter.api.Test
-    void setNavn() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void getVaegt() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void setVaegt() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void addOrdination() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void getOrdinationer() {
-    }
-
-    @org.junit.jupiter.api.Test
+    @Test
     void testToString() {
     }
 }
