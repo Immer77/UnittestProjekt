@@ -109,19 +109,19 @@ class PNTest {
         // ACT
         pn.givDosis(LocalDate.of(2022, 02, 04));
         pn.givDosis(LocalDate.of(2022, 02, 05));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,6));
-        pn.givDosis(LocalDate.of(2022,02,7));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,9));
-        pn.givDosis(LocalDate.of(2022,02,9));
-        pn.givDosis(LocalDate.of(2022,02,9));
-        pn.givDosis(LocalDate.of(2022,02,10));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 6));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 9));
+        pn.givDosis(LocalDate.of(2022, 02, 9));
+        pn.givDosis(LocalDate.of(2022, 02, 9));
+        pn.givDosis(LocalDate.of(2022, 02, 10));
 
 
         // ASSERT
@@ -140,11 +140,11 @@ class PNTest {
         // ACT
         pn.givDosis(LocalDate.of(2022, 02, 04));
         pn.givDosis(LocalDate.of(2022, 02, 05));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,6));
-        pn.givDosis(LocalDate.of(2022,02,7));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 6));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
 
         // ASSERT
         assertEquals(df.format(expectedOutput), df.format(pn.doegnDosis()));
@@ -169,7 +169,7 @@ class PNTest {
         pn.givDosis(datoGivet);
 
         // ASSERT
-        assertEquals(expectedOutput,pn.samletDosis());
+        assertEquals(expectedOutput, pn.samletDosis());
     }
 
     @Test
@@ -181,21 +181,21 @@ class PNTest {
         pn.setAntalEnheder(4);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,6));
-        pn.givDosis(LocalDate.of(2022,02,7));
-        pn.givDosis(LocalDate.of(2022,02,7));
-        pn.givDosis(LocalDate.of(2022,02,7));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,8));
-        pn.givDosis(LocalDate.of(2022,02,9));
-        pn.givDosis(LocalDate.of(2022,02,10));
-        pn.givDosis(LocalDate.of(2022,02,10));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 6));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(LocalDate.of(2022, 02, 9));
+        pn.givDosis(LocalDate.of(2022, 02, 10));
+        pn.givDosis(LocalDate.of(2022, 02, 10));
 
         // ASSERT
-        assertEquals(expectedOutput,pn.samletDosis());
+        assertEquals(expectedOutput, pn.samletDosis());
 
 
     }
@@ -204,26 +204,74 @@ class PNTest {
     void TC3_samletDosis_5_anvendt_8_enheder() {
 
         // ARRANGE
-        LocalDate datoGivet = LocalDate.of(2022, 02, 05);
         int expectedOutput = 40;
         pn.setAntalEnheder(8);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,5));
-        pn.givDosis(LocalDate.of(2022,02,6));
-        pn.givDosis(LocalDate.of(2022,02,7));
-        pn.givDosis(LocalDate.of(2022,02,7));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 5));
+        pn.givDosis(LocalDate.of(2022, 02, 6));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(LocalDate.of(2022, 02, 7));
 
 
         // ASSERT
-        assertEquals(expectedOutput,pn.samletDosis());
+        assertEquals(expectedOutput, pn.samletDosis());
 
     }
 
 
     @Test
-    void getAntalGangeGivet() {
+    void TC1_antalgivet_0_givet() {
+
+        // ARRANGE
+        Patient patient1 = new Patient("123494-7890", "Donna Summer", 66.5);
+        LocalDate start = LocalDate.of(2022, 02, 03);
+        LocalDate slut = LocalDate.of(2022, 02, 10);
+        int antalEnheder = 10;
+        PN pn1 = new PN(start, slut, patient1, antalEnheder);
+
+
+        // ASSERT
+        assertEquals(0, pn1.getAntalGangeGivet());
+    }
+
+    @Test
+    void TC2_antalgivet_2_givet() {
+
+        // ARRANGE
+        Patient patient1 = new Patient("123494-7890", "Donna Summer", 66.5);
+        LocalDate start = LocalDate.of(2022, 02, 03);
+        LocalDate slut = LocalDate.of(2022, 02, 10);
+        int antalEnheder = 10;
+        PN pn1 = new PN(start, slut, patient1, antalEnheder);
+
+        pn1.givDosis(start);
+        pn1.givDosis(slut);
+        // ASSERT
+        assertEquals(2, pn1.getAntalGangeGivet());
+    }
+
+    @Test
+    void TC3_antalgivet_7_givet() {
+
+        // ARRANGE
+        Patient patient1 = new Patient("123494-7890", "Donna Summer", 66.5);
+        LocalDate start = LocalDate.of(2022, 02, 03);
+        LocalDate slut = LocalDate.of(2022, 02, 10);
+        int antalEnheder = 10;
+        PN pn1 = new PN(start, slut, patient1, antalEnheder);
+
+        pn1.givDosis(start);
+        pn1.givDosis(start);
+        pn1.givDosis(start);
+        pn1.givDosis(start);
+        pn1.givDosis(slut);
+        pn1.givDosis(slut);
+        pn1.givDosis(slut);
+
+        // ASSERT
+        assertEquals(7, pn1.getAntalGangeGivet());
     }
 
     @Test
