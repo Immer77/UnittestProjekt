@@ -142,6 +142,10 @@ public class Controller {
                     }
                 }
             }
+        } if (vægtSlut < vægtStart) {
+            throw new IllegalArgumentException("Slutvægten kan ikke være lavere en startvægten");
+        } if (vægtStart <= 0 || vægtSlut <= 0) {
+            throw new IllegalArgumentException("Vægt kan ikke være 0");
         }
         return count;
     }
@@ -162,7 +166,7 @@ public class Controller {
      */
     private boolean checkStartFoerSlut(LocalDate startDato, LocalDate slutDato) {
         boolean result = true;
-        if (startDato.compareTo(slutDato) < 0) {
+        if (startDato.compareTo(slutDato) <= 0) {
             result = false;
         }
         return result;
