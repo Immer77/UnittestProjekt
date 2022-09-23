@@ -54,6 +54,14 @@ public abstract class Ordination {
         return startDen.toString();
     }
 
+    public void setStartDen(LocalDate startDen) {
+        this.startDen = startDen;
+    }
+
+    public void setSlutDen(LocalDate slutDen) {
+        this.slutDen = slutDen;
+    }
+
     /**
      * Returnerer den totale dosis der er givet i den periode ordinationen er gyldig
      * @return

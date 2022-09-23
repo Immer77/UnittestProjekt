@@ -1,9 +1,12 @@
 package ordination;
 
+import jdk.jfr.StackTrace;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DagligFast extends Ordination{
     // TODO
@@ -17,6 +20,7 @@ public class DagligFast extends Ordination{
         doses[1] = new Dosis(LocalTime.of(12,00), middagAntal);
         doses[2] = new Dosis(LocalTime.of(18,00), aftenantal);
         doses[3] = new Dosis(LocalTime.of(00,0), natantal);
+
     }
 
     public Dosis[] getDoses() {
