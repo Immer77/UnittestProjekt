@@ -13,7 +13,7 @@ public class Controller {
     private Storage storage;
     private static Controller controller;
 
-    private Controller() {
+    Controller() {
         storage = new Storage();
     }
 

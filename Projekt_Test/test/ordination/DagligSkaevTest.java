@@ -7,16 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DagligSkaevTest {
 
-    @org.junit.jupiter.api.Test
-    void getDoses() {
-    }
+    /**
+     CreateDosis
+     */
 
     @org.junit.jupiter.api.Test
-    void createDosis() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void TC1_OpretDosis_kl6_antal_2 () {
+    void TC1_CreateDosis_kl6_antal_2 () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -31,12 +27,8 @@ class DagligSkaevTest {
         assertTrue(d1.getDoses().contains(dosis));
     }
 
-    /**
-     OpretDosis
-     */
-
     @org.junit.jupiter.api.Test
-    void TC2_OpretDosis_kl9_antal_2 () {
+    void TC2_CreateDosis_kl9_antal_2 () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -52,7 +44,7 @@ class DagligSkaevTest {
     }
 
     @org.junit.jupiter.api.Test
-    void TC3_OpretDosis_kl15_antal_2 () {
+    void TC3_CreateDosis_kl15_antal_2 () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -68,7 +60,7 @@ class DagligSkaevTest {
     }
 
     @org.junit.jupiter.api.Test
-    void TC4_OpretDosis_kl15_antal_200 () {
+    void TC4_CreateDosis_kl15_antal_200 () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -84,7 +76,7 @@ class DagligSkaevTest {
     }
 
     @org.junit.jupiter.api.Test
-    void TC5_OpretDosis_kl00_antal_2 () {
+    void TC5_CreateDosis_kl00_antal_2 () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -100,7 +92,7 @@ class DagligSkaevTest {
     }
 
     @org.junit.jupiter.api.Test
-    void TC6_OpretDosis_kl9_antal_minus () {
+    void TC6_CreateDosis_kl9_antal_minus () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -116,7 +108,7 @@ class DagligSkaevTest {
     }
 
     @org.junit.jupiter.api.Test
-    void TC7_OpretDosis_kl09_antal_ligeNul () {
+    void TC7_CreateDosis_kl09_antal_ligeNul () {
 
         // Arrange
         Patient p1 = new Patient("111111-1111", "Lars Larsen",  85);
@@ -131,9 +123,9 @@ class DagligSkaevTest {
         assertTrue(d1.getDoses().contains(dosis));
     }
 
-
-
-
+/**
+SamletDoisis test
+*/
     @org.junit.jupiter.api.Test
     void TC1_samletDosis5_dage5 () {
 
@@ -152,6 +144,10 @@ class DagligSkaevTest {
         assertEquals(expected,actual);
 
     }
+
+/**
+DoegnDoisis test
+*/
 
     @org.junit.jupiter.api.Test
     void TC1_doegnDosis_5 () {
