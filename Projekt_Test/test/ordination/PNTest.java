@@ -38,9 +38,10 @@ class PNTest {
     void TC2_givDosis_dato_2022_02_08() {
         // ARRANGE
         int expectedOutput = 10;
+        LocalDate start = LocalDate.of(2022, 02, 8);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 8));
+        pn.givDosis(start);
 
         //
         assertEquals(expectedOutput, pn.samletDosis());
@@ -50,8 +51,10 @@ class PNTest {
     void TC3_givDosis_dato_2022_02_04() {
         // ARRANGE
         int expectedOutput = 10;
+        LocalDate start = LocalDate.of(2022, 02, 04);
+
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 4));
+        pn.givDosis(start);
 
         // ASSERT
         assertEquals(expectedOutput, pn.samletDosis());
@@ -61,8 +64,9 @@ class PNTest {
     void TC4_givDosis_dato_2022_02_01() {
         // ARRANGE
         int expectedOutput = 0;
+        LocalDate start = LocalDate.of(2022, 02, 01);
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 01));
+        pn.givDosis(start);
 
         // ASSERT
         assertEquals(expectedOutput, pn.samletDosis());
@@ -88,10 +92,11 @@ class PNTest {
         // ARRANGE
         double expectedOutput = 20;
         DecimalFormat df = new DecimalFormat("0.00");
+        LocalDate start = LocalDate.of(2022, 02, 04);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 04));
-        pn.givDosis(LocalDate.of(2022, 02, 05));
+        pn.givDosis(start);
+        pn.givDosis(start.plusDays(1));
 
         // ASSERT
         assertEquals(df.format(expectedOutput), df.format(pn.doegnDosis()));
@@ -105,24 +110,24 @@ class PNTest {
         // ARRANGE
         double expectedOutput = 25;
         DecimalFormat df = new DecimalFormat("0.00");
+        LocalDate start = LocalDate.of(2022, 02, 04);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 04));
-        pn.givDosis(LocalDate.of(2022, 02, 05));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 6));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 9));
-        pn.givDosis(LocalDate.of(2022, 02, 9));
-        pn.givDosis(LocalDate.of(2022, 02, 9));
-        pn.givDosis(LocalDate.of(2022, 02, 10));
-
+        pn.givDosis(start);
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(2));
+        pn.givDosis(start.plusDays(3));
+        pn.givDosis(start.plusDays(4));
+        pn.givDosis(start.plusDays(4));
+        pn.givDosis(start.plusDays(4));
+        pn.givDosis(start.plusDays(4));
+        pn.givDosis(start.plusDays(5));
+        pn.givDosis(start.plusDays(5));
+        pn.givDosis(start.plusDays(5));
+        pn.givDosis(start.plusDays(6));
 
         // ASSERT
         assertEquals(df.format(expectedOutput), df.format(pn.doegnDosis()));
@@ -136,15 +141,16 @@ class PNTest {
         // ARRANGE
         double expectedOutput = 23.33;
         DecimalFormat df = new DecimalFormat("0.00");
+        LocalDate start = LocalDate.of(2022, 02, 04);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 04));
-        pn.givDosis(LocalDate.of(2022, 02, 05));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 6));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(start);
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(1));
+        pn.givDosis(start.plusDays(2));
+        pn.givDosis(start.plusDays(3));
 
         // ASSERT
         assertEquals(df.format(expectedOutput), df.format(pn.doegnDosis()));
@@ -181,18 +187,18 @@ class PNTest {
         pn.setAntalEnheder(4);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 6));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 8));
-        pn.givDosis(LocalDate.of(2022, 02, 9));
-        pn.givDosis(LocalDate.of(2022, 02, 10));
-        pn.givDosis(LocalDate.of(2022, 02, 10));
+        pn.givDosis(datoGivet);
+        pn.givDosis(datoGivet);
+        pn.givDosis(datoGivet.plusDays(1));
+        pn.givDosis(datoGivet.plusDays(2));
+        pn.givDosis(datoGivet.plusDays(2));
+        pn.givDosis(datoGivet.plusDays(2));
+        pn.givDosis(datoGivet.plusDays(3));
+        pn.givDosis(datoGivet.plusDays(3));
+        pn.givDosis(datoGivet.plusDays(3));
+        pn.givDosis(datoGivet.plusDays(4));
+        pn.givDosis(datoGivet.plusDays(5));
+        pn.givDosis(datoGivet.plusDays(5));
 
         // ASSERT
         assertEquals(expectedOutput, pn.samletDosis());
@@ -204,15 +210,16 @@ class PNTest {
     void TC3_samletDosis_5_anvendt_8_enheder() {
 
         // ARRANGE
+        LocalDate datoGivet = LocalDate.of(2022, 02, 05);
         int expectedOutput = 40;
         pn.setAntalEnheder(8);
 
         // ACT
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 5));
-        pn.givDosis(LocalDate.of(2022, 02, 6));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
-        pn.givDosis(LocalDate.of(2022, 02, 7));
+        pn.givDosis(datoGivet);
+        pn.givDosis(datoGivet);
+        pn.givDosis(datoGivet.plusDays(1));
+        pn.givDosis(datoGivet.plusDays(2));
+        pn.givDosis(datoGivet.plusDays(2));
 
 
         // ASSERT
