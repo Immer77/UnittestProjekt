@@ -1,5 +1,7 @@
 package controller;
 
+import net.bytebuddy.asm.Advice;
+import ordination.DagligFast;
 import ordination.Laegemiddel;
 import ordination.PN;
 import ordination.Patient;
@@ -82,7 +84,52 @@ class ControllerTest {
 
 
     @Test
-    void opretDagligFastOrdination() {
+    void opretDagligFastOrdination_TC1() {
+        // Arrange
+        int morgenAntal = 1;
+        int middagAntal = 1;
+        int aftenAntal = 1;
+        int natAntal = 1;
+        Patient patient = new Patient("123494-7890", "Donna Summer", 66.5);
+        Laegemiddel laegemiddel = new Laegemiddel("Morfin", 0.1,0.15,0.16, "Styk");
+        LocalDate startdato = LocalDate.of(2022,2,1);
+        LocalDate slutdato = LocalDate.of(2022,2,5);
+        DagligFast dagligFast = new DagligFast(startdato,slutdato,patient,morgenAntal,middagAntal,aftenAntal,natAntal);
+
+        // Act
+        dagligFast.setLaegemiddel(laegemiddel);
+
+        // Assert
+        assertEquals(morgenAntal,dagligFast.getDoses()[0].getAntal());
+        assertEquals(middagAntal,dagligFast.getDoses()[1].getAntal());
+        assertEquals(aftenAntal,dagligFast.getDoses()[2].getAntal());
+        assertEquals(natAntal,dagligFast.getDoses()[3].getAntal());
+        assertEquals(startdato,dagligFast.getStartDen());
+        assertEquals(slutdato,dagligFast.getSlutDen());
+        assertEquals(laegemiddel,dagligFast.getLaegemiddel());
+
+    }
+
+    @Test
+    void opretDagligFastOrdination_TC2_Error() {
+        // Arrange
+        int morgenAntal = 1;
+        int middagAntal = 1;
+        int aftenAntal = 1;
+        int natAntal = 1;
+        Patient patient = new Patient("123494-7890", "Donna Summer", 66.5);
+        Laegemiddel laegemiddel = new Laegemiddel("Morfin", 0.1,0.15,0.16, "Styk");
+        LocalDate startdato = LocalDate.of(2022,2,1);
+        LocalDate slutdato = LocalDate.of(2022,1,1);
+
+        // Act
+        Exception exception = assertThrows(RuntimeException.class,() -> {
+           Controller.getController().opretDagligFastOrdination(startdato,slutdato,patient,laegemiddel,morgenAntal,middagAntal,aftenAntal,natAntal);
+        });
+
+        // Assert
+       assertEquals("Startdato er efter slutdato",exception.getMessage());
+
     }
 
     @Test
@@ -359,23 +406,5 @@ class ControllerTest {
         assertEquals(0, controller.antalOrdinationerPrVægtPrLægemiddel(130, 135, morfin));
     }
 
-    @Test
-    void getAllPatienter() {
-    }
 
-    @Test
-    void getAllLaegemidler() {
-    }
-
-    @Test
-    void opretPatient() {
-    }
-
-    @Test
-    void opretLaegemiddel() {
-    }
-
-    @Test
-    void createSomeObjects() {
-    }
 }
